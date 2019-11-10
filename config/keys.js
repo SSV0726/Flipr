@@ -1,4 +1,4 @@
-dbPassword = 'mongodb+srv://Vats:'+ encodeURIComponent('random') + '@yelpdb-xswdx.mongodb.net/test?retryWrites=true';
+dbPassword = 'mongodb+srv://<USER>:'+ encodeURIComponent(<PASSWORD>) + '@<CLUSTER>.mongodb.net/test?retryWrites=true';
 
 module.exports = {
     mongoURI: dbPassword
