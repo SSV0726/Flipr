@@ -1,0 +1,110 @@
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#"><h3>Welcome :  <%= user.name %>  </h3> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+        <li class="nav-item">
+          <a href="/users/logout" class="btn btn-danger">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+!-- Conternt - Page  -->
+<div class="page text-center" style="padding-top: 4%;">
+
+    <!--h1 class="font-weight-light">Vertically Centered Masthead Content</h1>
+    <p class="lead">A great starter layout for a landing page</p-->
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4" id="form" style="padding: 10px;">
+                    <h4> Add Note </h4>
+                <form action="/dashboard" method="POST" style="border: 3px solid grey;border-radius:10%;padding:24px;text-align:left">
+                   
+                    <input type="text" name="heading" id="" placeholder="Heading" required style="border:none;width: -webkit-fill-available;"><br>
+                    <hr style="margin: 4px;"> 
+                    <input type="text" name="content" id="" placeholder="Content" style="border:none;width: -webkit-fill-available;"><br>
+                    <br>
+                    <br>
+                    Color: <input type="color" name="bgcolor"  value="#ffffff" id=""><br>
+                    <br>
+                    <button class="btn btn-sm btn-primary">Submit </button> 
+                </form>
+            </div>
+
+            <div class="col-md-8" id="notes" style="border-left: 2px solid rgb(87, 84, 84); border-right: 2px solid rgb(87, 84, 84)" >
+                <h1 > Notes </h1>
+
+                <div class="container">
+
+
+                     
+                            <% i=0 %>
+                            <% user.content.forEach(function(task){ %>     
+                                         
+                               <%  if(i%2==0) { %>
+                                    <br>
+                                    <div class='row'>
+                                    <div class='col-6'>  
+                            <%  } else {  %>
+                                <div class='col-6'> 
+                                <% } %>
+
+                                <div class="card"  id="<%= task.heading %>" style="background-color: <%= task.bgcolor %>;">        
+                                    <div class="card-body">
+                                    <form action="/update" method="POST" >
+                                            <input type="number" name='num' value='<%= i %>' style="display: none;"> 
+                                            <h4 class="card-title">
+                                            <input type="text" name="heading" value="<%= task.heading  %>" style="background:<%= task.bgcolor %>;
+                                            border: none; width: -webkit-fill-available;font-weight:600;"></h4>
+                                            
+                                            <h4 class="card-title"> 
+                                            <input type="text"  name="content" value="<%= task.content  %>" style="background:<%= task.bgcolor %>;
+                                            border: none;width: -webkit-fill-available; font-size: 0.7em;">  </h4><br>
+                                <div class="bottomWhite" style="background: white; border: 2px solid; padding:6px">
+                                                    <input type="color" name="bgcolor" value="<%= task.bgcolor  %>"  class="btn btn-sm btn-secondary" style="padding:1px;   width: 60px;
+                                                    height: 30px;"">
+                                            
+                                                    <button class="btn btn-sm btn-primary" style="margin-left: 7px; margin-right: 7px;">Update</button>
+                                                </form>
+
+                                                <form action="/delete" method="POST" style="display: inline;">
+                                                    <input type="number" name='num' value='<%= i %>' style="display: none;"> 
+                                                    <button class="btn btn-sm btn-danger"> Delete</button>
+                                                </form>
+
+                                                </div>
+                                        </div>
+                                        <br>
+
+                                        <%  if(i%2==0) { %>
+                                        </div>
+                                        <%  } else {  %>
+                                        </div></div>
+                                            <% } %>
+                                 </div>
+                                <% i++; %>
+                                <% }) %> 
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+    </div>
+</div>
