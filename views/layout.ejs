@@ -9,10 +9,37 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
-    <title>Node.js & Passport Login App</title>
+    <title>Flipr Hackathon</title>
   </head>
-  <body>
+  <style>
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+/* Other Classes for Page Styling */
+
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+
+  </style>
+  <body >
+    <div class="container" style="margin-bottom: 11%">
     <%- body %>
+
+  </div>
+
+
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -32,18 +59,14 @@
 
     <script >
       
-        function alrt(msg){
-          alert("YOu click " + msg );
-  
-        }
-
-        function changeColor(msg,color){
-          
-          document.getElementById(msg).style.background = "#ff0000";
-        }
   
     </script>
 
-
   </body>
+
+  <footer id="sticky-footer" class="py-4 bg-dark text-white-50" style="flex-shrink: none;">
+      <div class="container text-center">
+        <small>Copyright &copy; Your Website</small>
+      </div>
+  </footer>
 </html>

@@ -15,6 +15,11 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
   })
 );
 
+router.get('/archive',ensureAuthenticated , (req,res)=>{
+
+    res.render('archive', {user: req.user});
+
+})
 
 router.post('/dashboard', ensureAuthenticated, (req, res) =>{
      
@@ -26,7 +31,6 @@ router.post('/dashboard', ensureAuthenticated, (req, res) =>{
         user: req.user  
     })
 });
-
 
 router.post('/update',ensureAuthenticated,(req,res)=> {
 
@@ -49,5 +53,23 @@ router.post('/delete',ensureAuthenticated,(req,res)=> {
   req.user.content =  newcont; 
   req.user.save();
   res.redirect('/dashboard');
+})
+
+router.post('/archive',ensureAuthenticated, (req,res) => {
+
+  var id = req.body.num;
+  req.user.content[id].archive = 1;
+  req.user.save();
+  res.redirect('/dashboard');
+
+})
+
+router.post('/unarchive',ensureAuthenticated, (req,res) => {
+
+  var id = req.body.num;
+  req.user.content[id].archive = 0;
+  req.user.save();
+  res.redirect('/archive')
+
 })
 module.exports = router;

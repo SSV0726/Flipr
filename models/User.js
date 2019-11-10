@@ -17,6 +17,10 @@ const taskSchema = new mongoose.Schema({
   bgcolor: {
     type: String,
     default: "White"
+  },
+  archive : {
+    type: Number,
+    default : 0
   }
 });
 
